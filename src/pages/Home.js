@@ -12,9 +12,9 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const [carouselComics, setCarouselComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-
+  //
   const [title, setTitle] = useState("");
-  const [skip, setSkip] = useState(0);
+  // const [skip, setSkip] = useState(0);
 
   useEffect(() => {
     const fetchComics = async () => {
