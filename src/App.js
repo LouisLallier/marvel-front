@@ -13,11 +13,13 @@ const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [user, setUser] = useState(Cookies.get("user-id") || null);
 
+  console.log(user);
+
   const handleTokenAndId = (token, userId, user) => {
     if (token) {
       setToken(token);
       setUser(user);
-      console.log(user);
+
       Cookies.set("token", token, { expires: 2 });
       Cookies.set("user-id", userId, { expires: 2 });
     } else {

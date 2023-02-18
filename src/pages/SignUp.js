@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = ({ handleTokenAndUserId }) => {
   const [email, setEmail] = useState("");
@@ -9,6 +9,9 @@ const SignUp = ({ handleTokenAndUserId }) => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
+  if (errorMessage) {
+    console.log(errorMessage);
+  }
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
