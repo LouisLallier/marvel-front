@@ -12,9 +12,6 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const [carouselComics, setCarouselComics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  //
-  const [title, setTitle] = useState("");
-  // const [skip, setSkip] = useState(0);
 
   useEffect(() => {
     const fetchComics = async () => {
@@ -23,7 +20,7 @@ const Home = () => {
       console.log(randomIndex);
       try {
         const res = await axios.get(
-          `http://localhost:5001/comics?limit=${limit}&skip=${randomIndex}&title=${title}`
+          `http://localhost:5001/comics?limit=${limit}&skip=${randomIndex}`
         );
 
         const randomIndexTab = [];
@@ -54,8 +51,8 @@ const Home = () => {
     <span>Loading</span>
   ) : (
     <div>
-      <div className="font-oswald text-4xl">
-        <h1>Avez-vous déjà lu ?</h1>
+      <div className="my-10 font-oswald text-4xl">
+        <h1 className="py-5">Avez-vous déjà lu ?</h1>
         <Swiper
           className=""
           // install Swiper modules
@@ -66,8 +63,8 @@ const Home = () => {
           navigation
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
-          onSwiper={(swiper) => console.log(swiper)}
-          onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log("slide change")}
         >
           {carouselComics.map((comic, index) => {
             return (
@@ -82,6 +79,9 @@ const Home = () => {
             );
           })}
         </Swiper>
+      </div>
+      <div className="flex justify-center">
+        <input className="rounded-xl bg-white" type="text" />
       </div>
     </div>
   );
