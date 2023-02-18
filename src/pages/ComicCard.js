@@ -5,9 +5,10 @@ const ComicCard = ({ comic }) => {
 
   return (
     <div className="font-roboto">
-      <h1 className="font-oswald">{comic.title}</h1>
+      <h1 className="my-4 w-[250px] truncate font-oswald text-2xl">
+        {comic.title}
+      </h1>
       <div className="relative">
-        {isHover && <div className="absolute top-0 left-0">coucou</div>}
         <img
           onMouseEnter={() => {
             setIsHover(true);
@@ -15,10 +16,23 @@ const ComicCard = ({ comic }) => {
           onMouseLeave={() => {
             setIsHover(false);
           }}
-          className={isHover ? "bg-yellow-400 opacity-70" : ""}
+          className={isHover ? "opacity-70" : ""}
           src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
           alt="default"
         />
+        {isHover && (
+          <button
+            onMouseEnter={() => {
+              setIsHover(true);
+            }}
+            onMouseLeave={() => {
+              setIsHover(false);
+            }}
+            className="absolute right-0 left-0 bottom-0 top-0 z-10 my-auto mx-auto h-12 w-28 rounded-xl bg-[#ED161F] opacity-100"
+          >
+            Voir details
+          </button>
+        )}
       </div>
 
       <div className="h-[40px] w-[220px] truncate pt-2 text-start text-sm">

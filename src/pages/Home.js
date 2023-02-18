@@ -48,9 +48,9 @@ const Home = () => {
   }, []);
 
   return isLoading ? (
-    <span>Loading</span>
+    <span className="h-screen">Loading</span>
   ) : (
-    <div>
+    <div className="h-screen">
       <div className="my-10 font-oswald text-4xl">
         <h1 className="py-5">Avez-vous déjà lu ?</h1>
         <Swiper
