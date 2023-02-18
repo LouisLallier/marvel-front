@@ -91,20 +91,7 @@ const AllComics = () => {
       ) : (
         <div className="flex flex-col items-center">
           <h1 className="mb-12 font-oswald text-6xl">Tous nos Comics</h1>
-          <ReactPaginate
-            className="mb-6 flex gap-3 p-2 font-roboto text-2xl"
-            pageClassName="p-2"
-            nextClassName="p-2"
-            previousClassName="p-2"
-            activeClassName=" bg-[#ED161F] rounded-md"
-            breakLabel="..."
-            nextLabel="next >"
-            pageRangeDisplayed={5}
-            onPageChange={handlePageClick}
-            pageCount={numberOfPages}
-            previousLabel="< previous"
-            renderOnZeroPageCount={null}
-          />
+
           <div className="flex flex-wrap justify-center gap-6">
             {comics.map((comic) => {
               return <ComicCard key={comic._id} comic={comic} />;
