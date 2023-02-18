@@ -23,13 +23,12 @@ const AllComics = () => {
   };
 
   const handlePageClick = (event) => {
-    if (numberOfPages === 0) {
-      const newOffset = (event.selected * comicsPerPage) % 1;
-      setPage(newOffset);
-    } else {
-      const newOffset = (event.selected * comicsPerPage) % numberOfPages;
-      setPage(newOffset);
-    }
+    const num = Math.floor(count / comicsPerPage);
+    setNumberOfPages(num);
+
+    const newOffset = (event.selected * comicsPerPage) % num;
+    setPage(newOffset);
+    // }
   };
 
   useEffect(() => {
@@ -42,7 +41,6 @@ const AllComics = () => {
         setComics(res.data.results);
         setIsLoading(false);
         setZeroResult(false);
-
         const num = Math.floor(count / comicsPerPage);
         setNumberOfPages(num);
 

@@ -11,9 +11,7 @@ import { useState } from "react";
 
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
-  const [user, setUser] = useState(Cookies.get("user-id") || null);
-
-  console.log(user);
+  const [user, setUser] = useState({});
 
   const handleTokenAndId = (token, userId, user) => {
     if (token) {
