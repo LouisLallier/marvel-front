@@ -62,13 +62,15 @@ const AllComics = () => {
   ) : (
     <div className="flex flex-col items-center">
       <div className="font-roboto text-xl text-black">
-        <div className="flex justify-center gap-6 p-10">
+        <div className="flex items-center justify-center gap-6 p-10">
           <input
+            placeholder="Rechercher un Comic..."
             className="rounded-xl px-8 py-4"
             type="text"
             value={title}
             onChange={handleTitle}
           />
+          <div className="text-white">Comics par pages :</div>
           <select
             className="rounded-xl p-3"
             value={comicsPerPage}
