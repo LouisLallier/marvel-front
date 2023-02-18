@@ -33,8 +33,8 @@ const App = () => {
   return (
     <div className="bg-[#281714]">
       <Router>
-        <Header handleTokenAndId={handleTokenAndId} token={token} />
-        <div className="mx-auto h-screen w-[1200px] text-[#F3DDDD]">
+        <Header handleTokenAndId={handleTokenAndId} user={user} token={token} />
+        <div className="mx-auto h-full w-[1200px] text-[#F3DDDD]">
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/comics" element={<AllComics />} />

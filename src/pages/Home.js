@@ -69,10 +69,11 @@ const Home = () => {
           {carouselComics.map((comic, index) => {
             return (
               <SwiperSlide key={index}>
+                {/*PATH TO UPDATE*/}
                 <Link to="/coucou">
                   <img
                     src={`${comic.thumbnail.path}/portrait_uncanny.${comic.thumbnail.extension}`}
-                    alt=""
+                    alt="default"
                   />
                 </Link>
               </SwiperSlide>

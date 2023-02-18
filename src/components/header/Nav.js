@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 
-const Nav = ({ handleTokenAndId, token }) => {
+const Nav = ({ handleTokenAndId, token, user }) => {
   const navigate = useNavigate();
 
   return (
@@ -31,15 +31,22 @@ const Nav = ({ handleTokenAndId, token }) => {
           </Link>
         </div>
       ) : (
-        <button
-          className="rounded-xl p-3 hover:bg-[#CC0006] hover:text-white"
-          onClick={() => {
-            handleTokenAndId(null, null);
-            navigate("/");
-          }}
-        >
-          Se déconnecter
-        </button>
+        <div className="flex w-1/2 justify-center gap-10">
+          <Link to="/user">
+            <button className="rounded-xl border border-[#ED161F] p-3 hover:bg-[#CC0006] hover:text-white">
+              Bonjour {user.username}
+            </button>
+          </Link>
+          <button
+            className="rounded-xl bg-[#CC0006] p-3 text-white hover:border hover:border-black hover:bg-[#ED161F] hover:text-black"
+            onClick={() => {
+              handleTokenAndId(null, null);
+              navigate("/");
+            }}
+          >
+            Se déconnecter
+          </button>
+        </div>
       )}
     </div>
   );
