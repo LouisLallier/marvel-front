@@ -16,7 +16,7 @@ const OneComic = ({ token, user, setUserNeedsRefresh, userNeedsRefresh }) => {
     [id, user?.favorites]
   );
   const addToFav = async () => {
-    const url = `${process.env.REACT_APP_API_URL}/addfav/`;
+    const url = `${process.env.REACT_APP_API_URL}addfav/`;
     try {
       await axios.put(url, {
         userId: user._id,
@@ -34,7 +34,7 @@ const OneComic = ({ token, user, setUserNeedsRefresh, userNeedsRefresh }) => {
 
   const removeFromFav = async () => {
     try {
-      await axios.put(`${process.env.REACT_APP_API_URL}/remove`, {
+      await axios.put(`${process.env.REACT_APP_API_URL}remove`, {
         userId: user._id,
         id: id,
       });

@@ -24,7 +24,7 @@ const SignUp = ({ handleTokenAndId }) => {
       formData.append("picture", picture);
       console.log(formData);
       const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/signup`,
+        `${process.env.REACT_APP_API_URL}signup`,
         formData
       );
 

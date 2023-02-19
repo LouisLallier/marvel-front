@@ -14,7 +14,7 @@ const OneChar = () => {
     const fetchComicForThisChar = async () => {
       try {
         const res = await axios.get(
-          `${process.env.REACT_APP_API_URL}/comics/${id}`
+          `${process.env.REACT_APP_API_URL}comics/${id}`
         );
         setComicsOfThisChar(res.data.comics);
         setIsLoading(false);
