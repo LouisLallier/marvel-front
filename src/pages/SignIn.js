@@ -46,7 +46,7 @@ const SignIn = ({ handleTokenAndId }) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              placeholder="Your Email"
+              placeholder="Email"
             />
           </div>
           <div className="pt-4">
@@ -66,7 +66,7 @@ const SignIn = ({ handleTokenAndId }) => {
             className="mt-5 rounded-xl border border-white p-3 hover:border-none hover:bg-[#CC0006] hover:text-white"
             type="submit"
           >
-            Sign In
+            Se connecter
           </button>
         </form>
       </div>

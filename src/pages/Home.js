@@ -87,7 +87,7 @@ const Home = () => {
         Bienvenue sur MarvelFans.
       </h1>
       <h3 className="py-3 text-center font-roboto text-xl">
-        Plonger vous dans l'univers Marvel !
+        Plongez-vous dans l'univers Marvel !
       </h3>
       <div className="my-10 pb-10 font-oswald text-4xl">
         <h1 className="py-5">Avez-vous déjà lu ?</h1>
@@ -130,7 +130,7 @@ const Home = () => {
       </div>
 
       <div className="my-10 font-oswald text-4xl">
-        <h1 className="py-5 text-end">Découvrez de nouveau héros !</h1>
+        <h1 className="py-5 text-end">Découvrez de nouveaux héros !</h1>
         <Swiper
           className=""
           // install Swiper modules

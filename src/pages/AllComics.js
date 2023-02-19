@@ -70,7 +70,7 @@ const AllComics = () => {
             value={title}
             onChange={handleTitle}
           />
-          <div className="text-white">Comics par pages :</div>
+          <div className="text-white">Comics par page :</div>
           <select
             className="rounded-xl p-3"
             value={comicsPerPage}

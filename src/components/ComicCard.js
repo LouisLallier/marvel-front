@@ -39,7 +39,7 @@ const ComicCard = ({ comic }) => {
             }}
             className="absolute right-0 left-0 bottom-0 top-0 z-10 my-auto mx-auto h-12 w-28 rounded-xl bg-[#ED161F] opacity-100"
           >
-            Voir details
+            Voir détails
           </button>
         )}
       </div>

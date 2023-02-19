@@ -23,6 +23,9 @@ const SignUp = ({ handleTokenAndId }) => {
       formData.append("password", password);
       formData.append("picture", picture);
       console.log(formData);
+      if (!picture) {
+        formData.append("picture", "");
+      }
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}signup`,
         formData
@@ -60,34 +63,34 @@ const SignUp = ({ handleTokenAndId }) => {
           className="mb-4 rounded bg-[#ED161F] px-8 pt-6 pb-8 shadow-md"
           onSubmit={handleSubmit}
         >
-          <div className="flex justify-center pb-3">Sign Up</div>
+          <div className="flex justify-center pb-3">S'inscrire'</div>
           <div className="pt-3">
             <label className="pl-2" htmlFor="email">
-              Username
+              Nom d'utilisateur :
             </label>
             <input
               className="m-2 rounded-md p-1 text-black"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               type="text"
-              placeholder="Your Username"
+              placeholder="Nom d'utilisateur"
             />
           </div>
           <div className="pt-3">
             <label className="pl-2" htmlFor="email">
-              Email
+              Email :
             </label>
             <input
               className="m-2 rounded-md p-1 text-black"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               type="email"
-              placeholder="Your Email"
+              placeholder="Email"
             />
           </div>
           <div className="pt-4">
             <label className="pl-2" htmlFor="pass">
-              Password
+              Password :
             </label>
             <input
               className="m-2 rounded-md p-1 text-black"
@@ -99,10 +102,10 @@ const SignUp = ({ handleTokenAndId }) => {
           </div>
           <div>
             <label
-              className="mb-2 block font-roboto text-sm text-gray-900 dark:text-white"
+              className="mb-2 block font-roboto text-sm text-gray-900 text-white"
               htmlFor="file_input"
             >
-              Avatar
+              Avatar :
             </label>
             <input
               onChange={(event) => {
@@ -113,10 +116,7 @@ const SignUp = ({ handleTokenAndId }) => {
               id="file_input"
               type="file"
             />
-            <p
-              className="mt-1 text-sm text-gray-500 dark:text-gray-300"
-              id="file_input_help"
-            >
+            <p className="mt-1 text-sm text-black" id="file_input_help">
               SVG, PNG, JPG or GIF
             </p>
           </div>
@@ -125,7 +125,7 @@ const SignUp = ({ handleTokenAndId }) => {
             className="mt-5 rounded-xl border border-white p-3 hover:border-none hover:bg-[#CC0006] hover:text-white"
             type="submit"
           >
-            Sign Up
+            S'inscrire
           </button>
         </form>
       </div>

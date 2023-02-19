@@ -8,12 +8,12 @@ const Nav = ({ handleTokenAndId, token, user }) => {
       <div className="flex w-1/2 justify-center gap-10">
         <Link to="/comics">
           <button className="rounded-xl p-3 hover:bg-[#CC0006] hover:text-white">
-            Tous les comics
+            Tous les Comics
           </button>
         </Link>
         <Link to="/chars">
           <button className="rounded-xl p-3 hover:bg-[#CC0006] hover:text-white">
-            Tous les Heroes
+            Tous les Héros
           </button>
         </Link>
       </div>
@@ -26,7 +26,7 @@ const Nav = ({ handleTokenAndId, token, user }) => {
           </Link>
           <Link to="/signin">
             <button className="rounded-xl p-3 hover:bg-[#CC0006] hover:text-white">
-              Se Connecter
+              Se connecter
             </button>
           </Link>
         </div>
