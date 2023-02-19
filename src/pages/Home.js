@@ -48,7 +48,7 @@ const Home = () => {
   }, []);
 
   return isLoading ? (
-    <span className="h-screen">Loading</span>
+    <div className="min-h-screen">Loading</div>
   ) : (
     <div className="h-screen">
       <div className="my-10 font-oswald text-4xl">

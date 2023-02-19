@@ -57,7 +57,7 @@ const AllComics = () => {
   // console.log(comics);
   return isLoading ? (
     <div>
-      <span className="h-screen">Loading</span>
+      <div className="h-screen">Loading</div>
     </div>
   ) : (
     <div className="flex flex-col items-center">

@@ -10,6 +10,7 @@ import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import OneComic from "./pages/OneComic";
 import axios from "axios";
+import OneChar from "./pages/OneChar";
 
 //TODO all chars and comics by chars
 // user info, and update if time
@@ -70,6 +71,7 @@ const App = () => {
               }
             />
             <Route path="/chars" element={<AllChars />} />
+            <Route path="/char" element={<OneChar />} />
             <Route
               path="/signin"
               element={<SignIn handleTokenAndId={handleTokenAndId} />}

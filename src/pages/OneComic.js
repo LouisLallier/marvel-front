@@ -28,7 +28,7 @@ const OneComic = ({ user, setHandleFetch, handleFetch }) => {
       }
     };
     checkIsInFav();
-  }, [isInFav, user]);
+  }, [id, isInFav, user]);
 
   const addToFav = async () => {
     try {
