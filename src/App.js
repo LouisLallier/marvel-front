@@ -11,6 +11,9 @@ import { useEffect, useState } from "react";
 import OneComic from "./pages/OneComic";
 import axios from "axios";
 
+//TODO all chars and comics by chars
+// user info, and update if time
+
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [user, setUser] = useState({});
