@@ -54,7 +54,6 @@ const AllComics = () => {
     fecthComics();
   }, [title, page, comicsPerPage, zeroResult, numberOfPages, count]);
 
-  // console.log(comics);
   return isLoading ? (
     <div>
       <div className="h-screen">Loading</div>

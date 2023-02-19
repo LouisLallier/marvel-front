@@ -18,7 +18,7 @@ const Home = () => {
     const fetchComics = async () => {
       const limit = 100;
       const randomIndex = Math.floor(Math.random() * 4200);
-      console.log(randomIndex);
+
       try {
         const res = await axios.get(
           `${process.env.REACT_APP_API_URL}comics?limit=${limit}&skip=${randomIndex}`
@@ -32,8 +32,6 @@ const Home = () => {
             randomIndexTab.push(randomNum);
           }
         }
-
-        console.log(randomIndexTab);
         const newTab = [];
         randomIndexTab.map((index) => {
           newTab.push(res.data.results[index]);
@@ -49,7 +47,7 @@ const Home = () => {
     const fetchChars = async () => {
       const limit = 100;
       const randomIndex = Math.floor(Math.random() * 1200);
-      console.log(randomIndex);
+
       try {
         const res = await axios.get(
           `${process.env.REACT_APP_API_URL}chars?limit=${limit}&skip=${randomIndex}`
@@ -63,8 +61,6 @@ const Home = () => {
             randomIndexTab.push(randomNum);
           }
         }
-
-        console.log(randomIndexTab);
         const newTab = [];
         randomIndexTab.map((index) => {
           newTab.push(res.data.results[index]);

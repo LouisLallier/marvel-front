@@ -15,7 +15,6 @@ const AllChars = () => {
   const [zeroResult, setZeroResult] = useState(false);
 
   const handleName = (event) => {
-    console.log("coucou");
     setName(event.target.value);
   };
   const handleCharsPerPage = (event) => {
@@ -55,7 +54,6 @@ const AllChars = () => {
     fecthComics();
   }, [name, page, charsPerPage, zeroResult, numberOfPages, count]);
 
-  // console.log(chars);
   return isLoading ? (
     <div>
       <div className="h-screen">Loading</div>

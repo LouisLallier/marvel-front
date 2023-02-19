@@ -22,7 +22,6 @@ const SignUp = ({ handleTokenAndId }) => {
       formData.append("email", email);
       formData.append("password", password);
       formData.append("picture", picture);
-      console.log(formData);
 
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}signup`,
@@ -32,9 +31,7 @@ const SignUp = ({ handleTokenAndId }) => {
       const token = res.data.token;
       const user = res.data.user;
       const userId = res.data.user._id;
-      console.log(token);
-      console.log(user);
-      console.log(userId);
+
       if (token) {
         handleTokenAndId(token, userId, user);
         navigate("/");
