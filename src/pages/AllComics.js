@@ -108,11 +108,11 @@ const AllComics = () => {
                 window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
               }}
               breakLabel="..."
-              nextLabel="next >"
+              nextLabel="suivante >"
               pageRangeDisplayed={5}
               onPageChange={handlePageClick}
               pageCount={numberOfPages}
-              previousLabel="< previous"
+              previousLabel="< précédente"
               renderOnZeroPageCount={null}
             />
           </div>

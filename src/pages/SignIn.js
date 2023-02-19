@@ -36,7 +36,7 @@ const SignIn = ({ handleTokenAndId }) => {
           className="mb-4 rounded bg-[#ED161F] px-8 pt-6 pb-8 shadow-md"
           onSubmit={handleSubmit}
         >
-          <div className="flex justify-center pb-3">Sign In</div>
+          <div className="flex justify-center pb-3">Se connecter</div>
           <div className="pt-3">
             <label className="pl-2" htmlFor="email">
               Email

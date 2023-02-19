@@ -23,9 +23,7 @@ const SignUp = ({ handleTokenAndId }) => {
       formData.append("password", password);
       formData.append("picture", picture);
       console.log(formData);
-      if (!picture) {
-        formData.append("picture", "");
-      }
+
       const res = await axios.post(
         `${process.env.REACT_APP_API_URL}signup`,
         formData
@@ -63,7 +61,7 @@ const SignUp = ({ handleTokenAndId }) => {
           className="mb-4 rounded bg-[#ED161F] px-8 pt-6 pb-8 shadow-md"
           onSubmit={handleSubmit}
         >
-          <div className="flex justify-center pb-3">S'inscrire'</div>
+          <div className="flex justify-center pb-3">S'inscrire</div>
           <div className="pt-3">
             <label className="pl-2" htmlFor="email">
               Nom d'utilisateur :
@@ -102,10 +100,10 @@ const SignUp = ({ handleTokenAndId }) => {
           </div>
           <div>
             <label
-              className="mb-2 block font-roboto text-sm text-gray-900 text-white"
+              className="mb-2 block font-roboto text-sm text-white text-white"
               htmlFor="file_input"
             >
-              Avatar :
+              Merci de bien choisir un Avatar :
             </label>
             <input
               onChange={(event) => {
