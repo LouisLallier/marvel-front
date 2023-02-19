@@ -51,8 +51,6 @@ const OneComic = ({ user }) => {
     }
   };
 
-  console.log(isInFav);
-
   return (
     <div className="flex h-screen justify-center">
       <div className="mt-16 flex h-[750px] w-[1060px] justify-evenly bg-[#f2e6e6] text-black">
