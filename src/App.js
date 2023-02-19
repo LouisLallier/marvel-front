@@ -11,6 +11,8 @@ import { useEffect, useState } from "react";
 import OneComic from "./pages/OneComic";
 import axios from "axios";
 import OneChar from "./pages/OneChar";
+import ProtectedRoute from "./components/logs/ProtectedRoute";
+import UserInfo from "./pages/UserInfo";
 
 //TODO all
 // user info, and update if time
@@ -35,7 +37,7 @@ const App = () => {
       }
     };
     fetchUser();
-  }, [handleFetch]);
+  }, [user]);
 
   const handleTokenAndId = (token, userId, user) => {
     if (token) {
@@ -80,6 +82,9 @@ const App = () => {
               path="/signup"
               element={<SignUp handleTokenAndId={handleTokenAndId} />}
             />
+            <Route element={<ProtectedRoute token={token} />}>
+              <Route path="/user" element={<UserInfo user={user} />} />
+            </Route>
           </Routes>
         </div>
       </Router>

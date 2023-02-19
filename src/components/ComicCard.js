@@ -16,9 +16,7 @@ const ComicCard = ({ comic }) => {
       }}
       className="font-roboto"
     >
-      <h1 className="my-4 w-[250px] truncate font-oswald text-2xl">
-        {comic.title}
-      </h1>
+      <h1 className="my-4 w-[250px]  font-oswald text-2xl">{comic.title}</h1>
       <div className="relative">
         <img
           onMouseEnter={() => {

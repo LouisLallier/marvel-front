@@ -2,10 +2,11 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const SignUp = ({ handleTokenAndUserId }) => {
+const SignUp = ({ handleTokenAndId }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [picture, setPicture] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -16,20 +17,26 @@ const SignUp = ({ handleTokenAndUserId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:5001/signup`, {
-        email,
-        username,
-        password,
-      });
-      console.log(res.data.token);
+      const formData = new FormData();
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("picture", picture);
+      console.log(formData);
+      const res = await axios.post(`http://localhost:5001/signup`, formData);
+
       const token = res.data.token;
       const user = res.data.user;
       const userId = res.data.user._id;
+      console.log(token);
+      console.log(user);
+      console.log(userId);
       if (token) {
-        handleTokenAndUserId(token, userId, user);
+        handleTokenAndId(token, userId, user);
         navigate("/");
       }
     } catch (e) {
+      console.log("catch");
       console.error(e);
       if (e.response.data.message === "This email already has an account") {
         setErrorMessage(
@@ -85,6 +92,15 @@ const SignUp = ({ handleTokenAndUserId }) => {
               onChange={(e) => setPassword(e.target.value)}
               type="password"
               placeholder="*********"
+            />
+          </div>
+          <div>
+            <input
+              onChange={(event) => {
+                setPicture(event.target.files[0]);
+              }}
+              type="file"
+              placeholder="Choisi Une image"
             />
           </div>
 
