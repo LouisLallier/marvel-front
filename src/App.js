@@ -28,7 +28,9 @@ const App = () => {
       try {
         const id = Cookies.get("user-id");
         if (id) {
-          const res = await axios.get(`http://localhost:5001/info/${id}`);
+          const res = await axios.get(
+            `${process.env.REACT_APP_API_URL}/info/${id}`
+          );
           setUser(res.data);
         } else {
           setUser(null);

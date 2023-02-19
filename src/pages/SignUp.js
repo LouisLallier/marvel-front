@@ -23,7 +23,10 @@ const SignUp = ({ handleTokenAndId }) => {
       formData.append("password", password);
       formData.append("picture", picture);
       console.log(formData);
-      const res = await axios.post(`http://localhost:5001/signup`, formData);
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/signup`,
+        formData
+      );
 
       const token = res.data.token;
       const user = res.data.user;

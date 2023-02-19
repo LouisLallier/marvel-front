@@ -21,7 +21,7 @@ const Home = () => {
       console.log(randomIndex);
       try {
         const res = await axios.get(
-          `http://localhost:5001/comics?limit=${limit}&skip=${randomIndex}`
+          `${process.env.REACT_APP_API_URL}/comics?limit=${limit}&skip=${randomIndex}`
         );
 
         const randomIndexTab = [];
@@ -52,7 +52,7 @@ const Home = () => {
       console.log(randomIndex);
       try {
         const res = await axios.get(
-          `http://localhost:5001/chars?limit=${limit}&skip=${randomIndex}`
+          `${process.env.REACT_APP_API_URL}/chars?limit=${limit}&skip=${randomIndex}`
         );
 
         const randomIndexTab = [];

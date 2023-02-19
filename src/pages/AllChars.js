@@ -36,7 +36,7 @@ const AllChars = () => {
     const fecthComics = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5001/chars?limit=${charsPerPage}&skip=${page}&name=${name}`
+          `${process.env.REACT_APP_API_URL}/chars?limit=${charsPerPage}&skip=${page}&name=${name}`
         );
         setCount(res.data.count);
         setChars(res.data.results);

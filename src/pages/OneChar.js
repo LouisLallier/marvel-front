@@ -13,7 +13,9 @@ const OneChar = () => {
   useEffect(() => {
     const fetchComicForThisChar = async () => {
       try {
-        const res = await axios.get(`http://localhost:5001/comics/${id}`);
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/comics/${id}`
+        );
         setComicsOfThisChar(res.data.comics);
         setIsLoading(false);
       } catch (e) {

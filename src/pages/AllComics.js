@@ -35,7 +35,7 @@ const AllComics = () => {
     const fecthComics = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:5001/comics?limit=${comicsPerPage}&skip=${page}&title=${title}`
+          `${process.env.REACT_APP_API_URL}/comics?limit=${comicsPerPage}&skip=${page}&title=${title}`
         );
         setCount(res.data.count);
         setComics(res.data.results);
