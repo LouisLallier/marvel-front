@@ -8,6 +8,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Cookies from "js-cookie";
 import { useState } from "react";
+import OneComic from "./pages/OneComic";
 
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
@@ -36,6 +37,7 @@ const App = () => {
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/comics" element={<AllComics />} />
+            <Route path="/comic" element={<OneComic user={user} />} />
             <Route path="/chars" element={<AllChars />} />
             <Route
               path="/signin"

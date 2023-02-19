@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ComicCard from "./ComicCard";
+import ComicCard from "../components/ComicCard";
 import ReactPaginate from "react-paginate";
 
 const AllComics = () => {
