@@ -1,10 +1,10 @@
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useMemo } from "react";
 import axios from "axios";
 
-const OneComic = ({ user, setUserNeedsRefresh, userNeedsRefresh }) => {
+const OneComic = ({ token, user, setUserNeedsRefresh, userNeedsRefresh }) => {
   const location = useLocation();
   const { id, title, picturePath, pictureExt, description } = location.state;
 
@@ -47,41 +47,52 @@ const OneComic = ({ user, setUserNeedsRefresh, userNeedsRefresh }) => {
   return (
     <div className="flex h-screen justify-center">
       <div className="mt-16 flex h-[750px] w-[1060px] justify-evenly bg-[#f2e6e6] text-black">
-        <div className="my-auto">
-          <h1 className="mb-4 py-3 font-oswald text-4xl font-bold">{title}</h1>
+        <div className="my-auto flex w-1/2 flex-col justify-between">
+          <h1 className="mb-3 w-full py-1 font-oswald text-4xl font-bold">
+            {title}
+          </h1>
           <img
             className="w-[400px]"
             src={`${picturePath}.${pictureExt}`}
             alt="default"
           />
         </div>
-        <div className="mt-20 w-1/3">
-          <div className="py-6 font-oswald text-3xl font-bold">
+        <div className="mt-20  w-1/3 ">
+          <div className="max-h-[450px] overflow-scroll font-oswald text-3xl font-bold">
             Petite Description du comic :
           </div>
           <div className="pt-4 font-roboto text-lg">{description}</div>
-          {isInFav ? (
-            <div className="flex items-end ">
-              <button className="mt-20 rounded-md bg-green-600 p-4 font-oswald text-white">
-                <FontAwesomeIcon className="pr-2" icon={faHeart} />
-                Ajouté a favoris
-              </button>
+
+          {token ? (
+            isInFav ? (
+              <div className="flex items-end ">
+                <button className="mt-20 rounded-md bg-green-600 p-4 font-oswald text-white">
+                  <FontAwesomeIcon className="pr-2" icon={faHeart} />
+                  Ajouté a favoris
+                </button>
+                <button
+                  onClick={removeFromFav}
+                  className="ml-4 rounded-md bg-[#ED161F] p-4 text-white"
+                >
+                  <FontAwesomeIcon icon={faTrashCan} />
+                </button>
+              </div>
+            ) : (
               <button
-                onClick={removeFromFav}
-                className="ml-4 rounded-md bg-[#ED161F] p-4 text-white"
+                onClick={addToFav}
+                className="mt-20 rounded-md bg-[#ED161F] p-4 font-oswald text-white"
               >
-                <FontAwesomeIcon icon={faTrashCan} />
+                <FontAwesomeIcon className="pr-2" icon={faHeart} />
+                Ajouter aux favoris
               </button>
-            </div>
+            )
           ) : (
-            <button
-              onClick={addToFav}
-              className="mt-20 rounded-md bg-[#ED161F] p-4 font-oswald text-white"
-            >
+            <button className="mt-20 rounded-md bg-[#ED161F] p-4 font-oswald text-white">
               <FontAwesomeIcon className="pr-2" icon={faHeart} />
-              Ajouter a favoris
+              <Link to="/signin">Ajouté aux favoris</Link>
             </button>
           )}
+          {}
         </div>
       </div>
     </div>

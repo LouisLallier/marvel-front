@@ -98,13 +98,27 @@ const SignUp = ({ handleTokenAndId }) => {
             />
           </div>
           <div>
+            <label
+              className="mb-2 block font-roboto text-sm text-gray-900 dark:text-white"
+              htmlFor="file_input"
+            >
+              Avatar
+            </label>
             <input
               onChange={(event) => {
                 setPicture(event.target.files[0]);
               }}
+              className="block w-full cursor-pointer rounded-lg border border-gray-300 bg-white text-sm text-gray-900  focus:outline-none dark:text-gray-400 dark:placeholder-gray-400"
+              aria-describedby="file_input_help"
+              id="file_input"
               type="file"
-              placeholder="Choisi Une image"
             />
+            <p
+              className="mt-1 text-sm text-gray-500 dark:text-gray-300"
+              id="file_input_help"
+            >
+              SVG, PNG, JPG or GIF
+            </p>
           </div>
 
           <button

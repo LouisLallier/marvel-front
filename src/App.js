@@ -77,7 +77,7 @@ const App = () => {
               }
             />
             <Route path="/chars" element={<AllChars />} />
-            <Route path="/char" element={<OneChar />} />
+            <Route path="/char" element={<OneChar token={token} />} />
             <Route
               path="/signin"
               element={<SignIn handleTokenAndId={handleTokenAndId} />}
