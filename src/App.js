@@ -13,6 +13,10 @@ import OneComic from "./pages/OneComic";
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [user, setUser] = useState({});
+  //TODO route dans le back pour fetch un user avec son id
+  // useEffect(async () => {
+  //  const fetchUser= await axios.get
+  // }, [user]);
 
   const handleTokenAndId = (token, userId, user) => {
     if (token) {
