@@ -12,7 +12,7 @@ import OneComic from "./pages/OneComic";
 import axios from "axios";
 import OneChar from "./pages/OneChar";
 
-//TODO all chars and comics by chars
+//TODO all
 // user info, and update if time
 
 const App = () => {
