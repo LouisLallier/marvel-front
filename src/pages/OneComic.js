@@ -4,7 +4,7 @@ import { faHeart, faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const OneComic = ({ user }) => {
+const OneComic = ({ user, setHandleFetch, handleFetch }) => {
   const [isInFav, setIsInFav] = useState(false);
 
   const location = useLocation();
@@ -21,7 +21,6 @@ const OneComic = ({ user }) => {
             console.log(isInFav);
             return;
           } else {
-            console.log("je suis la ");
             setIsInFav(false);
           }
           setIsInFav(false);
@@ -31,24 +30,26 @@ const OneComic = ({ user }) => {
       }
     };
     checkIsInFav();
-  }, [id, isInFav, user]);
+  }, [isInFav, user]);
 
   const addToFav = async () => {
     try {
       await axios.put(`http://localhost:5001/addfav/${user._id}/${id}`);
-      setIsInFav(true);
     } catch (e) {
       console.log(e.response);
     }
+    setIsInFav(true);
+    setHandleFetch(!handleFetch);
   };
 
   const removeFromFav = async () => {
     try {
       await axios.put(`http://localhost:5001/remove/${user._id}/${id}`);
-      setIsInFav(false);
     } catch (e) {
       console.log(e.response);
     }
+    setIsInFav(false);
+    setHandleFetch(!handleFetch);
   };
 
   return (
@@ -69,7 +70,7 @@ const OneComic = ({ user }) => {
           <div className="pt-4 font-roboto text-lg">{description}</div>
 
           {isInFav ? (
-            <div className="flex items-end justify-center">
+            <div className="flex items-end ">
               <button className="mt-20 rounded-md bg-green-600 p-4 font-oswald text-white">
                 <FontAwesomeIcon className="pr-2" icon={faHeart} />
                 Ajouté a favoris

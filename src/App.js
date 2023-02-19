@@ -7,16 +7,31 @@ import AllChars from "./pages/AllChars";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Cookies from "js-cookie";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import OneComic from "./pages/OneComic";
+import axios from "axios";
 
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [user, setUser] = useState({});
-  //TODO route dans le back pour fetch un user avec son id
-  // useEffect(async () => {
-  //  const fetchUser= await axios.get
-  // }, [user]);
+  const [handleFetch, setHandleFetch] = useState(false);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const id = Cookies.get("user-id");
+        if (id) {
+          const res = await axios.get(`http://localhost:5001/info/${id}`);
+          setUser(res.data);
+        } else {
+          setUser(null);
+        }
+      } catch (e) {
+        console.log(e.response);
+      }
+    };
+    fetchUser();
+  }, [handleFetch]);
 
   const handleTokenAndId = (token, userId, user) => {
     if (token) {
@@ -41,7 +56,16 @@ const App = () => {
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/comics" element={<AllComics />} />
-            <Route path="/comic" element={<OneComic user={user} />} />
+            <Route
+              path="/comic"
+              element={
+                <OneComic
+                  user={user}
+                  handleFetch={handleFetch}
+                  setHandleFetch={setHandleFetch}
+                />
+              }
+            />
             <Route path="/chars" element={<AllChars />} />
             <Route
               path="/signin"
