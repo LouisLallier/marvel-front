@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 const UserInfo = ({ user }) => {
@@ -13,7 +12,7 @@ const UserInfo = ({ user }) => {
             <img
               className="h-[100px] w-[100px] rounded-full object-cover"
               src={user.pictureUrl}
-              alt="Photo de profil"
+              alt="avatar"
             />
           </div>
           <div className="flex flex-col gap-4 py-6 font-roboto">

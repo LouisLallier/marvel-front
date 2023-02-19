@@ -1,7 +1,7 @@
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import axios from "axios";
 
 const OneComic = ({ user, setUserNeedsRefresh, userNeedsRefresh }) => {

@@ -24,7 +24,7 @@ const OneChar = () => {
     };
     fetchComicForThisChar();
     console.log(comicsOfThisChar);
-  }, [id]);
+  }, [comicsOfThisChar, id]);
 
   return isLoading ? (
     <div className="h-screen">Loading</div>
