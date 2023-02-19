@@ -10,8 +10,6 @@ const OneComic = ({ user, setHandleFetch, handleFetch }) => {
   const location = useLocation();
   const { id, title, picturePath, pictureExt, description } = location.state;
 
-  //TODO repair le fetch de user with cookie
-
   useEffect(() => {
     const checkIsInFav = async () => {
       if (user) {
