@@ -46,7 +46,7 @@ const OneChar = () => {
             <h2 className="py-1 font-oswald text-lg">Apparaît sur :</h2>
             <div className="h flex h-[350px] flex-wrap overflow-y-auto">
               {comicsOfThisChar.map((comic) => {
-                return <SmallComicCard comic={comic} />;
+                return <SmallComicCard comic={comic} key={comic._id} />;
               })}
             </div>
           </div>

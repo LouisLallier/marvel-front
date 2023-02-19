@@ -13,6 +13,7 @@ import axios from "axios";
 import OneChar from "./pages/OneChar";
 import ProtectedRoute from "./components/logs/ProtectedRoute";
 import UserInfo from "./pages/UserInfo";
+import Footer from "./components/Footer";
 
 //TODO all
 // user info, and update if time
@@ -20,7 +21,7 @@ import UserInfo from "./pages/UserInfo";
 const App = () => {
   const [token, setToken] = useState(Cookies.get("token") || null);
   const [user, setUser] = useState({});
-  const [handleFetch, setHandleFetch] = useState(false);
+  const [userNeedsRefresh, setUserNeedsRefresh] = useState(true);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -35,9 +36,10 @@ const App = () => {
       } catch (e) {
         console.log(e.response);
       }
+      setUserNeedsRefresh(false);
     };
-    fetchUser();
-  }, [user]);
+    if (userNeedsRefresh) fetchUser();
+  }, [userNeedsRefresh]);
 
   const handleTokenAndId = (token, userId, user) => {
     if (token) {
@@ -67,8 +69,8 @@ const App = () => {
               element={
                 <OneComic
                   user={user}
-                  handleFetch={handleFetch}
-                  setHandleFetch={setHandleFetch}
+                  userNeedsRefresh={userNeedsRefresh}
+                  setUserNeedsRefresh={setUserNeedsRefresh}
                 />
               }
             />
@@ -88,6 +90,7 @@ const App = () => {
           </Routes>
         </div>
       </Router>
+      <Footer />
     </div>
   );
 };

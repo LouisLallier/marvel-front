@@ -1,41 +1,24 @@
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
-const OneComic = ({ user, setHandleFetch, handleFetch }) => {
-  const [isInFav, setIsInFav] = useState(false);
-  const [check, setCheck] = useState(false);
-
+const OneComic = ({ user, setUserNeedsRefresh, userNeedsRefresh }) => {
   const location = useLocation();
   const { id, title, picturePath, pictureExt, description } = location.state;
 
-  useEffect(() => {
-    const checkIsInFav = async () => {
-      if (user) {
-        console.log(user.favorites);
-        try {
-          user.favorites.map((fav) => {
-            if (fav.comicId === id) {
-              return setIsInFav(true);
-            }
-            setIsInFav(false);
-          });
-        } catch (e) {
-          console.log(e.response);
-        }
-      }
-    };
-
-    checkIsInFav();
-  }, [check, isInFav]);
-
+  const isInFav = useMemo(
+    () =>
+      user?.favorites.filter(({ comicId }) => {
+        return comicId === id;
+      }).length > 0,
+    [id, user?.favorites]
+  );
   const addToFav = async () => {
     const url = `http://localhost:5001/addfav/`;
-    console.log(url);
     try {
-      const res = await axios.put(url, {
+      await axios.put(url, {
         userId: user._id,
         id: id,
         title,
@@ -43,9 +26,7 @@ const OneComic = ({ user, setHandleFetch, handleFetch }) => {
         pictureExt,
         description,
       });
-      setCheck(true);
-      setIsInFav(true);
-      console.log(res);
+      setUserNeedsRefresh(true);
     } catch (e) {
       console.log(e.response);
     }
@@ -57,13 +38,10 @@ const OneComic = ({ user, setHandleFetch, handleFetch }) => {
         userId: user._id,
         id: id,
       });
-      setCheck(!check);
-      setIsInFav(!isInFav);
+      setUserNeedsRefresh(true);
     } catch (e) {
       console.log(e.response);
     }
-
-    setHandleFetch(!handleFetch);
   };
 
   return (
@@ -82,8 +60,7 @@ const OneComic = ({ user, setHandleFetch, handleFetch }) => {
             Petite Description du comic :
           </div>
           <div className="pt-4 font-roboto text-lg">{description}</div>
-
-          {check ? (
+          {isInFav ? (
             <div className="flex items-end ">
               <button className="mt-20 rounded-md bg-green-600 p-4 font-oswald text-white">
                 <FontAwesomeIcon className="pr-2" icon={faHeart} />
