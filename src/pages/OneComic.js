@@ -63,36 +63,28 @@ const OneComic = ({ token, user, setUserNeedsRefresh, userNeedsRefresh }) => {
           </div>
           <div className="pt-4 font-roboto text-lg">{description}</div>
 
-          {token ? (
-            isInFav ? (
-              <div className="flex items-end ">
-                <button className="mt-20 rounded-md bg-green-600 p-4 font-oswald text-white">
-                  <FontAwesomeIcon className="pr-2" icon={faHeart} />
-                  Ajouté a favoris
-                </button>
-                <button
-                  onClick={removeFromFav}
-                  className="ml-4 rounded-md bg-[#ED161F] p-4 text-white"
-                >
-                  <FontAwesomeIcon icon={faTrashCan} />
-                </button>
-              </div>
-            ) : (
-              <button
-                onClick={addToFav}
-                className="mt-20 rounded-md bg-[#ED161F] p-4 font-oswald text-white"
-              >
+          {isInFav ? (
+            <div className="flex items-end ">
+              <button className="mt-20 rounded-md bg-green-600 p-4 font-oswald text-white">
                 <FontAwesomeIcon className="pr-2" icon={faHeart} />
-                Ajouter aux favoris
+                Ajouté a favoris
               </button>
-            )
+              <button
+                onClick={removeFromFav}
+                className="ml-4 rounded-md bg-[#ED161F] p-4 text-white"
+              >
+                <FontAwesomeIcon icon={faTrashCan} />
+              </button>
+            </div>
           ) : (
-            <button className="mt-20 rounded-md bg-[#ED161F] p-4 font-oswald text-white">
+            <button
+              onClick={addToFav}
+              className="mt-20 rounded-md bg-[#ED161F] p-4 font-oswald text-white"
+            >
               <FontAwesomeIcon className="pr-2" icon={faHeart} />
-              <Link to="/signin">Ajouté aux favoris</Link>
+              Ajouter aux favoris
             </button>
           )}
-          {}
         </div>
       </div>
     </div>
